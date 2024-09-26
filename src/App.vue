@@ -1,10 +1,13 @@
-<script setup lang="ts">
-import Todos from './components/Todos.vue'
-</script>
-
 <template>
-  <main>
-    <Todos />
-  </main>
+  <div id="app">
+    <router-view></router-view>
+  </div>
 </template>
 
+<script>
+export default {
+  name: 'App'
+}
+</script>
+
+<style src="./css/styles.css"></style>

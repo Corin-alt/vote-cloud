@@ -1,0 +1,168 @@
+/* Variables globales */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --background-color: #130f40;
+    --text-color: #ffffff;
+    --card-background: #1a1650;
+    --form-background: #ffffff;
+    --form-text-color: #333333;
+    --border-color: #2c2c54;
+  }
+  
+  /* Styles globaux */
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1, h2 {
+    color: var(--text-color);
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #27ae60;
+  }
+  
+  /* Styles pour Home.vue */
+  .home {
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .home nav {
+    margin: 20px 0;
+  }
+  
+  .home nav a {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+  }
+  
+  .home nav a:hover {
+    color: #5dade2;
+  }
+  
+  /* Styles pour Candidates.vue */
+  .candidates {
+    padding: 20px;
+  }
+  
+  .candidates li {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 4px;
+  }
+  
+  /* Styles pour Results.vue */
+  .results {
+    padding: 20px;
+  }
+  
+  .results li {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* Styles pour Vote.vue */
+  .vote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .vote form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .vote select {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-radius: 4px;
+  }
+  
+  /* Styles pour Login.vue */
+  .login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .login form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .login input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .login button {
+    margin-top: 10px;
+  }
+  
+  .login p {
+    margin-top: 15px;
+    color: #e74c3c;
+  }
