@@ -1,7 +1,7 @@
 /* Variables globales */
 :root {
   --primary-color: #3498db;
-  --secondary-color: #2ecc71;
+  --secondary-color: #eb4d4b;
   --background-color: #130f40;
   --text-color: #ffffff;
   --card-background: #1a1650;
@@ -46,7 +46,7 @@ button {
 }
 
 button:hover {
-  background-color: #27ae60;
+  background-color: #eb4d4b;
 }
 
 /* Styles pour Home.vue */

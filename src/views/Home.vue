@@ -1,20 +1,39 @@
 <template>
   <div class="home">
-    <h1>Bienvenue sur l'application de vote</h1>
+    <!-- Main title of the application with user's name -->
+    <h1>Welcome {{ userName }}</h1>
+    
+    <!-- Navigation menu -->
     <nav>
-      <router-link to="/vote">Voter</router-link> |
-      <router-link to="/candidates">Liste des candidats</router-link> |
-      <router-link to="/results">Voir les résultats</router-link>
+      <!-- Router links to different sections of the application -->
+      <router-link to="/vote">Vote</router-link> |
+      <router-link to="/candidates">List of candidates</router-link> |
+      <router-link to="/results">View results</router-link>
     </nav>
-    <button @click="logout">Déconnexion</button>
+    
+    <!-- Logout button -->
+    <button @click="logout">Logout</button>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      userName: ''
+    }
+  },
+  created() {
+    // Retrieve the name from localStorage when the component is created
+    this.userName = localStorage.getItem('name') || 'Guest';
+  },
   methods: {
+    // Logout method
     logout() {
+      // Remove authentication status and name from local storage
       localStorage.removeItem('isAuthenticated');
+      localStorage.removeItem('name');
+      // Redirect to login page
       this.$router.push('/login');
     }
   }
