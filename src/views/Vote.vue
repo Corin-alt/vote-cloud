@@ -67,7 +67,7 @@ export default {
         return
       }
 
-      const userId = localStorage.getItem('userId')
+      const userId = localStorage.getItem('userID')
       if (!userId) {
         message.value = 'You must be logged in to vote.'
         isError.value = true
@@ -83,22 +83,16 @@ export default {
         const data = response.data
 
         if (response.status === 200) {
-          if (data.message === 'Vote enregistré avec succès') {
             message.value = 'Vote successfully recorded'
             isError.value = false
             hasVoted.value = true
             selectedCandidate.value = ''
             // Redirect to results page
             router.push('/results')
-          } else {
-            message.value = 'You have already voted. Thank you for your participation!'
+        } else {
+          message.value = 'You have already voted. Thank you for your participation!'
             isError.value = true
             hasVoted.value = true
-          }
-        } else {
-          const errorMessage = data.body ? data.body.error : 'An error occurred.'
-          message.value = errorMessage
-          isError.value = true
         }
       } catch (error) {
         console.error('Error recording vote:', error)
