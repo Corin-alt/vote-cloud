@@ -43,7 +43,7 @@ export default {
     const message = ref('')
     const isError = ref(false)
     const loading = ref(true)
-    const hasVoted = ref(false)
+    const hasVoted = ref(localStorage.getItem('voted') === 'true');
 
     const fetchCandidates = async () => {
       try {
@@ -68,38 +68,39 @@ export default {
       }
 
       const userId = localStorage.getItem('userID')
-      if (!userId) {
-        message.value = 'You must be logged in to vote.'
-        isError.value = true
-        return
-      }
+        if (!userId) {
+          message.value = 'You must be logged in to vote.'
+          isError.value = true
+          return
+        }
 
-      try {
-        const response = await axios.post('https://7nagspfib0.execute-api.eu-west-3.amazonaws.com/vote/vote', {
-          candidateID: selectedCandidate.value,
-          userID: userId
-        })
+        try {
+          const response = await axios.post('https://7nagspfib0.execute-api.eu-west-3.amazonaws.com/vote/vote', {
+            candidateID: selectedCandidate.value,
+            userID: userId
+          })
 
-        const data = response.data
+          const data = response.data
 
-        if (response.status === 200) {
+          if (response.status === 200) {
             message.value = 'Vote successfully recorded'
             isError.value = false
             hasVoted.value = true
-            selectedCandidate.value = ''
+            localStorage.setItem('voted', 'true')
             // Redirect to results page
             router.push('/results')
-        } else {
-          message.value = 'You have already voted. Thank you for your participation!'
+          } else {
+            message.value = 'You have already voted. Thank you for your participation!'
             isError.value = true
             hasVoted.value = true
+            localStorage.setItem('voted', 'true')
+          }
+        } catch (error) {
+          console.error('Error recording vote:', error)
+          message.value = 'An error occurred while recording the vote.'
+          isError.value = true
         }
-      } catch (error) {
-        console.error('Error recording vote:', error)
-        message.value = 'An error occurred while recording the vote.'
-        isError.value = true
       }
-    }
 
     onMounted(async () => {
       await fetchCandidates()

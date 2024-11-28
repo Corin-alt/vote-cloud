@@ -82,12 +82,14 @@ export default {
       try {
         const userID = data.body.userID;
         const name = data.body.name;
+        const voted = data.body.voted;
         
         if (userID) {
           // Store user information in local storage
           this.setLocalStorage('userID', userID);
           this.setLocalStorage('name', name);
           this.setLocalStorage('isAuthenticated', 'true');
+          this.setLocalStorage('voted', voted);
         } else {
           this.error = "Failed to retrieve user ID";
           return;
